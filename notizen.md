@@ -8,7 +8,7 @@ ssh-keygen -t ed25519 -C "githubr@gfed.de"
 
 Anleitung für Keychain folgen? https://docs.github.com/de/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 
-Vielleicht war der Fehler auch dass ich Password als Password gelesen habe aber eigentlich der Token gemeint war.
+Wichtig ist dem adden zu folgen und immer git als Username in den links zu benutzen. Die eigentlich Zuordnung erfolgt dann mit dem Zertifikat. 
 
 Token Im WebGui generieren und diesen als Passwort benutzen(Benutzername ohne Emaildomain)
 
@@ -58,3 +58,9 @@ git push -u origin main
 
 Sind Bilder oso vorhanden, kann es zu einem Fehler (rpc fehlgeschlagen http 400 curl 22) kommen. Es hilft: git config --global http.postBuffer 524288000
 git commit -m "Initialisierung"
+
+Wird nach Usernam/Password gefragt hilft 
+
+git remote set-url origin git@github.com:JoachimROtto/spielwiese
+
+Ist ein Secret drin und wird nicht gepusht oder sollen andere lokale commits verworfen werden: git reset --hard HEAD~1 dreht die lokalen Commits um je eine Stufe zurück. 
