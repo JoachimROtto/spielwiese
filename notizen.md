@@ -36,15 +36,11 @@ Hinweis: Leere Unterordner werden von Git standardmäßig nicht erfasst. Falls e
 
 ## aussem Repo lokal erstellen
 
-git init
+ins lokale Verzeichnis (Achtung: es wird ein Unterverzeichnis mit dem Namen erstellt)
 
-git add .
+git clone https://github.com/JoachimROtto/.....
 
-git commit -m "Initial commit"
-
-git branch -M main
-
-git remote add origin https://github.com/JoachimROtto/.....
+syncen wie gewohnt (Aber nicht von hier sondern aus dem erstellten Unterverzeichnis)
 
 ## syncen im weiteren Sinne
 
