@@ -10,7 +10,12 @@ Anleitung für Keychain folgen? https://docs.github.com/de/authentication/connec
 
 Vielleicht war der Fehler auch dass ich Password als Password gelesen habe aber eigentlich der Token gemeint war.
 
-Token Im WebGui generieren und diesen als Passwort benutzen
+Token Im WebGui generieren und diesen als Passwort benutzen(Benutzername ohne Emaildomain)
+
+evtl.: 
+
+git config --global user.email "githubr@gfed.de"
+git config --global user.name "JoachimROtto"
 
 ## bestehendes migrieren
 
