@@ -1,3 +1,20 @@
+# ToDo
+- Im Beispiel wurde auf erste Tricks wie float3 verzichtet
+- Beispiel wurde verändert ->Paper
+- CUDA-Beispiel die Threaderzeugung überlegen. Oh nein n=1 Mio. verpufft weil i<n nur einmal geprüft wird!!!!
+- Zeit CUDA: user ,018 s sys ,260s =>mit 10.000.000 wiederholen ->Grütze
+- Alles in ein Skript und dann excel!
+
+# notizen
+- CUDA startet man mit Abwandlungen von nvcc <<Name>>.cu -arch=sm_86 & ./a.out
+time ./<<Name>> wirft real(gesamt) user  (programm) sys(darin steckende syscalls)
+
+# links
+Da waren noch tabs offen
+- https://software.intel.com/sites/landingpage/pintool/docs/99977/Pin/doc/html/index.html#SimpleCount
+- https://www.intel.com/content/dam/develop/external/us/en/documents/asplos2008-handson-256675.pdf
+- https://en.wikipedia.org/wiki/Pin_(computer_program)
+
 # github
 
 ## github-zugang (cert etc.)
