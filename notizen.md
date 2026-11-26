@@ -34,7 +34,7 @@ git commit -m "Initial commit"
 
 git branch -M main
 
-git remote add origin <DEINE-GITHUB-URL>
+git remote add origin https://JoachimROtto@github.com/JoachimROtto/....
 
 git push -u origin main
 
