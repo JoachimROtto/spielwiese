@@ -15,6 +15,7 @@ Token Im WebGui generieren und diesen als Passwort benutzen(Benutzername ohne Em
 evtl.: 
 
 git config --global user.email "githubr@gfed.de"
+
 git config --global user.name "JoachimROtto"
 
 ## bestehendes migrieren
