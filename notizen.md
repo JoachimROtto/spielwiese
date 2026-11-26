@@ -83,3 +83,5 @@ git remote set-url origin git@github.com:JoachimROtto/spielwiese
 Ist ein Secret drin und wird nicht gepusht oder sollen andere lokale commits verworfen werden: git reset --hard HEAD~1 dreht die lokalen Commits um je eine Stufe zurück.
 
 War das viel des Guten (denn es wird wirklich zurückgedreht!!!) dann mit git reflog den Hash des Wunschcommits finden und mit git reset --Hard <<Hash>> entsprechend zurückkehren
+
+Fragt Ubuntu nach einem PW wenn gepusht wird ist damit kein sudo oder so gemeint sondern der Schlüssel des Zertifikates
