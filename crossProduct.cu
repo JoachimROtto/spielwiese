@@ -1,17 +1,21 @@
 #include <cuda_runtime.h>
 #include <cstdio>
-
+// kaputt ,060
+// forlaufend ,065
+// versetzt 0,57
 // Device/GPU-Funktion
 __global__ void crossProductKernel(const float* a, const float* b, float* c, int n) {
     // eindeutigen Index des aktuellen Threads berechenen (Nummer des eigenen Blocks * gemeinsame Blockgroesse + Position im eigenen Block)
     int i = blockIdx.x * blockDim.x + threadIdx.x;
     
-    // Pruefen, ob der Thread innerhalb der Vektorgroesse liegt, also der Index < 1000 ist
-    // TODO generischer gestalten denn so wird weiterhin nur der i-te Vektor berechnet!
-    // Idee: 1024 Threads prüfen ob sie i<n/1024 sind und rechnen dann die nächsten n/1024 Vektoren (ist  blocksize*gridsize abfragbar?)
-    if (i < n) {
-        // Der Index im Array fuer 3D-Vektoren ist i * 3
-        int idx = i * 3;
+    // i ist eine grösse zwischen 0 und 1024 und soll diesen Bruchteil einer Mio berechnen (abfolgend oder um 1024 versetzt?)
+    // abfolgend: von i*1024 bis (i+1)*1024, +1, aber was für das ende!!
+    // versetzt: von i * 1024 bis 1Mio, +1024
+    for (int k=i*1024;( k <n);k+=1024) {
+//    for (int k=i*1024;( k < (i+1)*1024 & k<n);k++) {
+//    if (i<n){
+        // Der Index im Array fuer 3D-Vektoren ist k * 3
+        int idx = k * 3;
         int idy = idx + 1;
         int idz = idx + 2;
         
@@ -19,7 +23,6 @@ __global__ void crossProductKernel(const float* a, const float* b, float* c, int
         c[idy] = a[idz] * b[idx] - a[idx] * b[idz];
         c[idz] = a[idx] * b[idy] - a[idy] * b[idx];
     }
-    
     }
 __host__ int main(){
 

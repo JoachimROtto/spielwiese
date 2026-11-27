@@ -1,13 +1,30 @@
+Marschbefehl: alle Beispiele ausser jax laufen, CUDA-Threads fixen, Papers und Buch (nur Profiler) lesen, jax fixen, zeiten nehmen, Paper deepln, drucken, odenpaper 
 # ToDo
 - Im Beispiel wurde auf erste Tricks wie float3 verzichtet
 - Beispiel wurde verändert ->Paper
 - CUDA-Beispiel die Threaderzeugung überlegen. Oh nein n=1 Mio. verpufft weil i<n nur einmal geprüft wird!!!!
 - Zeit CUDA: user ,018 s sys ,260s =>mit 10.000.000 wiederholen ->Grütze
+- In der JAX-Variante erzwingt ein Versionskonflikt CPU-Ausführung und es funktioniert nur innnerhalb VSCode
+- INsgesamt immer nur die CUDA-Variante nehmen (ausser NumPy und Python-only) denn darum geht es ja: CUDA
 - Alles in ein Skript und dann excel!
-
+- np.cross in numba (und auch sonst?) langsamer als loop (aus speichergründen):https://numba.discourse.group/t/numba-with-cross-product-is-10x-slow-than-numba-with-loop/145/3
+- Das macht alles überhaupt keinen Sinn, bereits die fast leere Datei mit import kostet 1,6 s ->in MEthoden packen und nen Profiler drüber, genauer pyNaive 1,15 same + import numpy 2,5
+- numba/cuda ohne numpy 
+naiv: 1,2s
+numpy: 1,5s
+cupy: 2,1s
+jax/jit: 1,77
+numba mit cuda und numpy: 1,8
+numba mit cuda ohne numpy: (zickt bei result, typfehler?)
+numba mit cuda und cupy?: 2
+dask: timout bzw. 6s für 10.000(lazy ev, Ausführung bei result.compute())
+Ubuntu 2X.XX.XX, Python 3.1X, cuda, nvcc, compiler?
 # notizen
-- CUDA startet man mit Abwandlungen von nvcc <<Name>>.cu -arch=sm_86 & ./a.out
-time ./<<Name>> wirft real(gesamt) user  (programm) sys(darin steckende syscalls)
+- CUDA startet man mit Abwandlungen von nvcc <<Name>>.cu -arch=sm_86 & ./a.out, aber Achtung: das & sorgt dafür dass nicht aufeinander gewartet wird! Naja irgendwie wohl doch...
+- time ./<<Name>> wirft real(gesamt) user  (programm) sys(darin steckende syscalls)
+- insgesamt an dinge wie print("Ergebnis stimmt überein:", np.allclose(result, np.cross(a, b))) zur Qualitätskontrolle denken
+
+
 
 # links
 Da waren noch tabs offen
@@ -84,4 +101,4 @@ Ist ein Secret drin und wird nicht gepusht oder sollen andere lokale commits ver
 
 War das viel des Guten (denn es wird wirklich zurückgedreht!!!) dann mit git reflog den Hash des Wunschcommits finden und mit git reset --Hard <<Hash>> entsprechend zurückkehren
 
-Fragt Ubuntu nach einem PW wenn gepusht wird ist damit kein sudo oder so gemeint sondern der Schlüssel des Zertifikates
+Fragt Ubuntu (also das GUI) nach einem PW wenn gepusht wird ist damit kein sudo oder so gemeint sondern der Schlüssel des Zertifikates
